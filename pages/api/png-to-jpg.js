@@ -17,4 +17,4 @@ export default async function handler(req, res) {
     res.setHeader("Content-Type", "image/jpeg");
     res.send(jpgBuffer);
   });
-      }
+}
