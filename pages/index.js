@@ -18,74 +18,65 @@ export default function Home() {
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #0474ff, #0057d2)",
-        padding: "30px 15px",
+        background: "linear-gradient(135deg,#0047a1,#1976d2)",
+        padding: "20px",
         color: "white",
       }}
     >
       {/* HEADER */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <h1 style={{ fontSize: "42px", fontWeight: "900" }}>
-          Free Multi File Converter Tools
-        </h1>
-        <p style={{ fontSize: "20px", opacity: 0.9 }}>
-          Convert any file instantly — Fast, Secure & Free!
-        </p>
-      </div>
-
-      {/* MAIN WHITE CARD */}
-      <div
+      <h1
         style={{
-          background: "white",
-          borderRadius: "20px",
-          padding: "30px",
-          maxWidth: "600px",
-          margin: "0 auto",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+          textAlign: "center",
+          fontSize: "38px",
+          fontWeight: "900",
+          marginBottom: "10px",
         }}
       >
-        <h2
-          style={{
-            color: "#0057d2",
-            fontWeight: "900",
-            fontSize: "26px",
-            textAlign: "center",
-            marginBottom: "20px",
-          }}
-        >
-          Choose Your Conversion Tool
-        </h2>
+        Premium Multi File Converter Tools
+      </h1>
 
-        {/* Tools Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: "15px",
-          }}
-        >
-          {tools.map((tool, index) => (
-            <Link key={index} href={tool.link}>
-              <div
-                style={{
-                  padding: "15px",
-                  background: "#f3f7ff",
-                  color: "#0057d2",
-                  borderRadius: "12px",
-                  fontWeight: "bold",
-                  fontSize: "17px",
-                  textAlign: "center",
-                  cursor: "pointer",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  transition: "0.25s",
-                }}
-              >
-                {tool.name}
-              </div>
-            </Link>
-          ))}
-        </div>
+      <p
+        style={{
+          textAlign: "center",
+          opacity: 0.9,
+          fontSize: "18px",
+          marginBottom: "40px",
+        }}
+      >
+        Convert any file instantly — Fast, Secure & Completely Free!
+      </p>
+
+      {/* TOOL GRID */}
+      <div
+        style={{
+          maxWidth: "900px",
+          margin: "auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {tools.map((tool, index) => (
+          <Link key={index} href={tool.link}>
+            <div
+              style={{
+                background: "white",
+                color: "#0047a1",
+                padding: "18px",
+                textAlign: "center",
+                borderRadius: "14px",
+                fontWeight: "bold",
+                fontSize: "17px",
+                boxShadow: "0 6px 14px rgba(0,0,0,0.15)",
+                cursor: "pointer",
+                transition: "0.3s",
+              }}
+            >
+              {tool.name}
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
-        }
+}
