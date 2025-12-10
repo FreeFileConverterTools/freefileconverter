@@ -1,47 +1,63 @@
 import { useState } from "react";
 
-export default function PNGtoJPG() {
-  const [file, setFile] = useState(null);
+export default function PngToJpg() {
+  const [image, setImage] = useState(null);
   const [result, setResult] = useState(null);
 
+  const handleFile = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   const convert = async () => {
-    const form = new FormData();
-    form.append("file", file);
+    if (!image) return;
+
+    const formData = new FormData();
+    formData.append("file", image);
 
     const res = await fetch("/api/png-to-jpg", {
       method: "POST",
-      body: form
+      body: formData,
     });
 
     const blob = await res.blob();
-    setResult(URL.createObjectURL(blob));
+    const url = URL.createObjectURL(blob);
+    setResult(url);
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">PNG to JPG Converter</h1>
+    <div style={{ padding: "30px", textAlign: "center" }}>
+      <h1 className="page-title">PNG to JPG Converter</h1>
+      <p className="subtitle">Convert PNG image to JPG instantly – Free & Fast</p>
 
-      <input
-        type="file"
-        accept="image/png"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
+      <input type="file" accept="image/png" onChange={handleFile} />
+
+      <br/><br/>
 
       <button
         onClick={convert}
-        className="mt-3 p-2 bg-blue-600 text-white rounded"
+        style={{
+          background: "#0047a1",
+          color: "white",
+          padding: "12px 20px",
+          borderRadius: "8px",
+          marginTop: "10px",
+        }}
       >
-        Convert
+        Convert Now
       </button>
 
       {result && (
-        <div className="mt-4">
-          <h2 className="font-bold">Download Result:</h2>
-
+        <div style={{ marginTop: "30px" }}>
+          <h3>Download Your JPG File</h3>
           <a
             href={result}
             download="converted.jpg"
-            className="text-blue-600 underline"
+            style={{
+              background: "white",
+              color: "#0047a1",
+              padding: "10px 18px",
+              borderRadius: "6px",
+            }}
           >
             Download JPG
           </a>
